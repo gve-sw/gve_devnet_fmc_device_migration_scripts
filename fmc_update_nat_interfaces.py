@@ -110,7 +110,7 @@ class FirePower:
         """
         Retrieve NAT policy UUID by name
         """
-        url = f"{CONFIG_URL}/domain/{self.global_UUID}/policy/ftdnatpolicies"
+        url = f"{CONFIG_URL}/domain/{self.global_UUID}/policy/ftdnatpolicies?limit=1000"
         console.print("Querying FMC for NAT policies...")
         resp = self.getData(url)
         if resp:
@@ -137,7 +137,7 @@ class FirePower:
         """
         Query all NAT rules for given NAT policy UUID & type
         """
-        url = f"{CONFIG_URL}/domain/{self.global_UUID}/policy/ftdnatpolicies/{self.nat_policy_id}/{ruletype}natrules?expanded=True"
+        url = f"{CONFIG_URL}/domain/{self.global_UUID}/policy/ftdnatpolicies/{self.nat_policy_id}/{ruletype}natrules?expanded=True&limit=1000"
         resp = self.getData(url)
         if ruletype == "manual":
             self.manual_nat_rules = []
